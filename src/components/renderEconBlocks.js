@@ -6,28 +6,28 @@ import '../ui-toolkit/css/nm-cx/main.css';
 import '../css/custom.css';
 
 //app imports
-import { ShowActiveSideBarListLink } from './setActiveNavLinks';
+import { ShowActiveSideBarListLinkWithTooltip } from './setActiveNavLinks';
 
 //Block Details API Call to: https://restcountries.eu/rest/v2/regionalbloc/
-const listOfBlocs = ["EU", //European Union
-                    "EFTA", //European Free Trade Association
-                    "CARICOM", //Caribbean Community
-                    "PA", //Pacific Alliance
-                    "AU", //African Union
-                    "USAN", //Union of South American Nations
-                    "EEU", //Eurasian Economic Union
-                    "AL", //Arab League
-                    "ASEAN", //Association of Southeast Asian Nations
-                    "CAIS", //Central American Integration System
-                    "CEFTA", //Central European Free Trade Agreement
-                    "NAFTA", //North American Free Trade Agreement
-                    "SAARC" //South Asian Association for Regional Cooperation
+const listOfBlocs = [{acronym: "EU", name: "European Union"},
+                     {acronym: "EFTA", name: "European Free Trade Association"},
+                     {acronym: "CARICOM", name: "Caribbean Community"},
+                     {acronym: "PA", name: "Pacific Alliance"},
+                     {acronym: "AU", name: "African Union"},
+                     {acronym: "USAN", name: "Union of South American Nations"},
+                     {acronym: "EEU", name: "Eurasian Economic Union"},
+                     {acronym: "AL", name: "Arab League"},
+                     {acronym: "ASEAN", name: "Association of Southeast Asian Nations"},
+                     {acronym: "CAIS", name: "Central American Integration System"},
+                     {acronym: "CEFTA", name: "Central European Free Trade Agreement"},
+                     {acronym: "NAFTA", name: "North American Free Trade Agreement"},
+                     {acronym: "SAARC", name: "South Asian Association for Regional Cooperation"}
                     ];
 
 //render links out as NM formatted sidebar links
 function mapListOfBlocksNavBarWithLINK(blocObject, arrayIndex) {
     return (
-        <ShowActiveSideBarListLink label={blocObject.toString()} to={"/" + blocObject.toString()} activeOnlyWhenExact={true} arrayIndex={arrayIndex} key={"economicBlocsListItem" + arrayIndex}/>
+        <ShowActiveSideBarListLinkWithTooltip label={blocObject.acronym} to={"/" + blocObject.acronym} activeOnlyWhenExact={true} arrayIndex={arrayIndex} key={"economicBlocsListItem" + arrayIndex} toolTipText={blocObject.name}/>
     );
 }
 

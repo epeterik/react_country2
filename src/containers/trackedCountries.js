@@ -92,7 +92,7 @@ class TrackedCountries extends Component {
             <div className="card padding-medium">
                 {this.state.showWaitSpinner ?
                     <div className="text-center">
-                        <h3>Getting List of Tracked Countries!!</h3>
+                        <h3>Getting List of Tracked Countries</h3>
                         <WaitSpinner />
                         <h4>Please be patient</h4>
                     </div>

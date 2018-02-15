@@ -92,16 +92,17 @@ class Country extends Component {
                                 <img alt={localCountryObject.name + " flag"} src={localCountryObject.flag} height="150" width="255" border="1"/>
                             </div>
                             <div className="small-9 columns tableDiv">
-                                <div className="row">
-                                    <div className="small-3 columns">
-                                        Country Name: 
-                                    </div>
-                                    <div className="small-9 columns">
-                                        <Link to={"/countries/" + localCountryObject.name}>{ localCountryObject.name }</Link>
-                                    </div>
-                                </div>
+                                
                                 <div className="row">
                                     <div className="small-9 columns">
+                                        <div className="row">
+                                            <div className="small-3 columns">
+                                                Country Name: 
+                                            </div>
+                                            <div className="small-9 columns">
+                                                <Link to={"/countries/" + localCountryObject.name}>{ localCountryObject.name }</Link>
+                                            </div>
+                                        </div>
                                         <div className="row">
                                             <div className="small-3 columns">
                                                 Capital: 

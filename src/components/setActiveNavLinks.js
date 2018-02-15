@@ -18,8 +18,17 @@ export const OldSchoolMenuLink = ({ label, to, activeOnlyWhenExact }) => (
 //Use for vertical nav bar rendering
 export const ShowActiveSideBarListLink = ({ label, to, activeOnlyWhenExact, arrayIndex }) => (
     <Route path={to} exact={activeOnlyWhenExact} children={({ match }) => (
-      <li className={'filter-nav-entry' + (match ? ' active' : '')} key={"blockListItem" + arrayIndex} id={"blockListItem" + arrayIndex}>
+      <li className={'filter-nav-entry' + (match ? ' active' : '')} key={"blockListItem" + arrayIndex} id={"blockListItem" + arrayIndex} >
         <Link to={to}>{label}</Link>
       </li>
     )}/>
   )
+
+//Use for vertical nav bar rendering
+export const ShowActiveSideBarListLinkWithTooltip = ({ label, to, activeOnlyWhenExact, arrayIndex, toolTipText }) => (
+  <Route path={to} exact={activeOnlyWhenExact} children={({ match }) => (
+    <li className={'filter-nav-entry' + (match ? ' active' : '')} key={"blockListItem" + arrayIndex} id={"blockListItem" + arrayIndex} title="test here">
+      <Link to={to} title={toolTipText}>{label}</Link>
+    </li>
+  )}/>
+)

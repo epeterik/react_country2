@@ -90,10 +90,15 @@ class BlockMembership extends Component {
             <div className="card padding-medium">
                 {this.state.showWaitSpinner ?
                     <div className="text-center">
-                        <h3>Updating Note With Vote!!</h3>
+                        <h3>Loading with Economic Block Members</h3>
                         <WaitSpinner />
                         <h4>Please be patient</h4>
                     </div>
+                    :
+                    this.state.errorText.trim() !== "" ?
+                        <div>
+                            <h3 className="text-center errorEncountered">Economic Block Data Not Found :(</h3>
+                        </div>
                     :
                     <div>
                         <h1 className="text-center">{this.props.match.params.economicBlock}</h1>

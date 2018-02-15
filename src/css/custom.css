@@ -6,7 +6,7 @@ body {
     color: green;
 }
 
-.losingPlayer {
+.errorEncountered {
     color: red;
 }
 

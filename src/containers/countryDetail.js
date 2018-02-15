@@ -107,18 +107,23 @@ class CountryDetail extends Component {
         return (
             
             <div className="card padding-medium" >
-                {this.state.showWaitSpinner || localCountryObject === undefined ?
+                {this.state.showWaitSpinner || (localCountryObject === undefined && this.state.errorText === "") ?
                     <div className="text-center">
-                        <h3>Logging Updated Country Tracking Status</h3>
+                        <h3>Retrieving Country Details</h3>
                         <WaitSpinner />
                         <h4>Please be patient</h4>
                     </div>
                     :
+                    this.state.errorText.trim() !== "" ?
+                        <div>
+                            <h3 className="text-center errorEncountered">Country Data Not Found :(</h3>
+                        </div>
+                    :
                     <div> 
-                        <h1>{ localCountryObject.name }</h1>
+                        <u><h1>{ localCountryObject.name }</h1></u>
                         <div className="row">
                             <div className="small-2 columns">
-                                Capital: 
+                                <b>Capital: </b>
                             </div>
                             <div className="small-10 columns">
                                 { localCountryObject.capital }
@@ -126,15 +131,15 @@ class CountryDetail extends Component {
                         </div>
                         <div className="row">
                             <div className="small-2 columns">
-                                Currencies:
+                                <b>Currencies:</b>
                             </div>
                             <div className="small-10 columns">
                                 <div className="row">
                                     <div className="small-6 columns">
-                                        Name:
+                                        <b><u>Name</u></b>
                                     </div>
                                     <div className="small-6 columns">
-                                        Symbol:
+                                        <b><u>Symbol</u></b>
                                     </div>
                                 </div>
                                 { localCountryObject.currencies.map(this.mapCurrencies) }
@@ -142,7 +147,7 @@ class CountryDetail extends Component {
                         </div>
                         <div className="row">
                             <div className="small-2 columns">
-                                Languages:
+                                <b>Languages:</b>
                             </div>
                             <div className="small-10 columns">
                                 { localCountryObject.languages.map(this.mapLanguages) }
@@ -150,15 +155,18 @@ class CountryDetail extends Component {
                         </div>
                         <div className="row">
                             <div className="small-2 columns">
-                                Population:
+                                <b>Population:</b>
                             </div>
                             <div className="small-10 columns">
                                 { localCountryObject.population.toLocaleString() }
                             </div>
                         </div>
                         <div className="row">
+                            &nbsp;
+                        </div>
+                        <div className="row">
                             <div className="small-2 columns">
-                                Flag:
+                                <b>Flag:</b>
                             </div>
                             <div className="small-10 columns">
                                 <img alt={ localCountryObject.name + " flag" } src={ localCountryObject.flag } height="300" width="510" border="1"/>
