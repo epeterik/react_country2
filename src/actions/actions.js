@@ -105,6 +105,9 @@ export function getTrackedCountriesList (waitFlag, errorFunction, getTrackedCoun
                 {
                     dispatch(getTrackedCountriesData(response.data, waitFlag, errorFunction));
                 }
+
+                //fix defect where error data is not cleared between failed and successful calls
+                dispatch(() => errorFunction(''));
             })
             .catch((error) => {
                 //Failure!
@@ -157,6 +160,9 @@ export function getTrackedCountriesData (trackedNationList, waitFlag, errorFunct
 
                 //update store with list of users
                 dispatch(updateTrackedCountriesData(response.data));
+
+                //fix defect where error data is not cleared between failed and successful calls
+                dispatch(() => errorFunction(''));
             })
             .catch((error) => {
                 //Failure!
@@ -203,6 +209,9 @@ export function setCountryAsTracked (countryData, waitFlag, errorFunction)
 
                 //update store with list of users
                 dispatch(getTrackedCountriesList(waitFlag, errorFunction, false));
+
+                //fix defect where error data is not cleared between failed and successful calls
+                dispatch(() => errorFunction(''));
             })
             .catch((error) => {
                 //Failure!
@@ -242,6 +251,9 @@ export function setCountryAsUNtracked (deleteId, waitFlag, errorFunction)
 
                 //update store with list of users
                 dispatch(getTrackedCountriesList (waitFlag, errorFunction, true));
+
+                //fix defect where error data is not cleared between failed and successful calls
+                dispatch(() => errorFunction(''));
             })
             .catch((error) => {
                 //Failure!
@@ -285,6 +297,9 @@ export function getCountryData (countryName, waitFlag, errorFunction, foundCount
                 //     we get fresh data - if data goes to the store there is the risk that 
                 //     it could persist when we do not want it to. 
                 dispatch(() => foundCountryData(response.data));
+
+                //fix defect where error data is not cleared between failed and successful calls
+                dispatch(() => errorFunction(''));
             })
             .catch((error) => {
                 //Failure!
